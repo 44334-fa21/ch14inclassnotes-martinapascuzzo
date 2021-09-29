@@ -10,6 +10,7 @@
   <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
  <style>
+         #details {display:none;}
 input { display: block;
         margin-bottom: 1em;
         }
@@ -21,7 +22,12 @@ label { float: left;
 #submit { margin-left: 7em; }		
 </style>
 </head>
+
 <body>
+<h1>JQuery</h1>
+<p>Many websites, including Amazon and Google, use Jquery, to provide interaction and dynamic effects on we pages <a href="#" id="more">more.</a></p>
+<div id="details"><p>The Jquery API works along with Javascript and provides easy ways to dynamically manipulate the CSS properties of elements, detect, and react to events, and animate elements on a webpage, such as an image slideshow.</p></div>
+
 <h1>JavaScript Form Handling</h1>
 <form method="post"
       action="http://webdevbasics.net/scripts/demo.php"
@@ -44,25 +50,26 @@ label { float: left;
 
 <!--Embed script tags at the very bottom-->
 <script>
+        $(document).ready(function(){
+                $('#more').click(function(){
+                        $('#details').toggle();
+                });
+        });
         function validateForm(){
                 //Everything defaults at zero, not one
                 if(document.forms[0].userName.value == ""){
                         alert("Name field cannot be empty.");
                         return false;
                 }
-                if(document.forms[0].userAge.value < 18 || document.forms[0].userAge.value > 100) {
-                        alert("Age is less than 18. You do not have access.");
+                if(document.forms[0].userAge.value < 18 ) {
+                        alert("Age is less than 18. You are not an adult.");
                         return false;
                 }
                 alert("Name and age are valid.");
                 return true;
         }
 
-        $(document).ready(function(){
-                $('#more').click(function(){
-                        $('#details').toggle();
-                });
-        });
+        
 </script>
 
 </body>
